@@ -18,13 +18,15 @@ public class Alumni {
     }
     
     @PostConstruct
-    public void executeBootcamp() {
-        double totalNumberOfHours = 1200;
-        
-        for (Instructor instructor : instructors) {
-            instructor.lecture(students, totalNumberOfHours / instructors.size());
-        }
+public void executeBootcamp() {
+    double totalNumberOfHoursPerStudent = 1200;
+    int numberOfStudents = students.size();
+    double totalHoursToTeach = totalNumberOfHoursPerStudent * numberOfStudents;
+    
+    for (Instructor instructor : instructors) {
+        instructor.lecture(students, totalHoursToTeach / instructors.size());
     }
+}
     
     public Students getStudents() {
         return students;
